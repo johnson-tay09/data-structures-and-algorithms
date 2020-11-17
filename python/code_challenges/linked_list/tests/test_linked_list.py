@@ -47,7 +47,7 @@ def test_true_value():
     expected = True
     assert actual == expected
 
-    # Will return false when searching for a value in the linked list that does not exist
+# Will return false when searching for a value in the linked list that does not exist
 
 
 def test_false_value():
@@ -71,3 +71,60 @@ def test_values():
     print(actual)
     expected = ["a", "b", "c"]
     assert actual == expected
+
+# .append(value) which adds a new node with the given value to the end of the list
+
+
+def test_append():
+    L = LinkedList()
+    L.append_list("a")
+    L.append_list("b")
+    L.append_list("c")
+    actual = L.value_list()
+    print(actual)
+    expected = ["a", "b", "c"]
+    assert actual == expected
+# .insertBefore(value, newVal) which add a new node with the given newValue immediately before the first value node
+
+
+def test_insert_before():
+    L = LinkedList()
+    L.append_list("a")
+    L.append_list("b")
+    L.append_list("c")
+    L.insert_before("c", "z")
+    actual = L.value_list()
+    print(actual)
+    expected = ["a", "b", "z", "c"]
+    assert actual == expected
+    L.insert_before("a", "y")
+    actual = L.value_list()
+    print(actual)
+    expected = ["y", "a", "b", "z", "c"]
+    assert actual == expected
+
+# .insertAfter(value, newVal) which add a new node with the given newValue immediately after the first value node
+
+
+def test_insert_after():
+    L = LinkedList()
+    L.append_list("a")
+    L.append_list("b")
+    L.append_list("c")
+    L.insert_after("b", "z")
+    actual = L.value_list()
+    print(actual)
+    expected = ["a", "b", "z", "c"]
+    assert actual == expected
+    L.insert_after("c", "y")
+    actual = L.value_list()
+    print(actual)
+    expected = ["a", "b", "z", "c", "y"]
+    assert actual == expected
+
+# Can successfully add a node to the end of the linked list
+# Can successfully add multiple nodes to the end of a linked list
+# Can successfully insert a node before a node located i the middle of a linked list
+# Can successfully insert a node before the first node of a linked list
+# Can successfully insert after a node in the middle of the linked list
+# Can successfully insert a node after the last node of the linked list
