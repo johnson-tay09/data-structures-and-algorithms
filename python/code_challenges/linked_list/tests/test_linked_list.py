@@ -122,9 +122,32 @@ def test_insert_after():
     expected = ["a", "b", "z", "c", "y"]
     assert actual == expected
 
-# Can successfully add a node to the end of the linked list
-# Can successfully add multiple nodes to the end of a linked list
-# Can successfully insert a node before a node located i the middle of a linked list
-# Can successfully insert a node before the first node of a linked list
-# Can successfully insert after a node in the middle of the linked list
-# Can successfully insert a node after the last node of the linked list
+
+def test_initialize_with_list():
+    L = LinkedList(["a", "b", "c", "d"])
+    assert str(L) == " { a } -> { b } -> { c } -> { d } -> NULL"
+
+
+def test_nth_greater_than():
+    L = LinkedList(["a", "b", "c", "d"])
+    assert L.nth_from_end(8) == 'Exception'
+
+
+def test_nth_last():
+    L = LinkedList(["a", "b", "c", "d"])
+    assert L.nth_from_end(4) == "a"
+
+
+def test_nth_negative():
+    L = LinkedList(["a", "b", "c", "d"])
+    assert L.nth_from_end(-6) == 'Exception'
+
+
+def test_nth_list_of_one():
+    L = LinkedList(["a"])
+    assert L.nth_from_end(0) == "a"
+
+
+def test_nth_average_use():
+    L = LinkedList(["a", "b", "c", "d", "e", "f", "g"])
+    assert L.nth_from_end(3) == "d"

@@ -13,8 +13,11 @@ class Node:
 
 class LinkedList:
 
-    def __init__(self):
+    def __init__(self, arr=[]):
         self.head = None
+        # rearrange the list for counting nth from end
+        for value in arr[::-1]:
+            self.insert(value)
 
     def insert(self, value):
         self.head = Node(value, self.head)
@@ -113,3 +116,32 @@ class LinkedList:
             # otherwise set new node equal to self.head as in the first node in the list
         else:
             self.head = new_node
+# track the length of the list
+
+    def list_length(self):
+        length = 0
+        current_node = self.head
+        # traverse the list and increment length
+        while current_node:
+            length += 1
+            current_node = current_node.next
+        return length
+
+    def nth_from_end(self, n=0):
+        # make sure user inputs an int
+        if type(n) != int:
+            return 'Exception'
+        # make sure user inputs a number not greater than the list or negative
+        if n > self.list_length() or n < 0:
+            return 'Exception'
+        # start at the head
+        current_node = trailing = self.head
+        counter = 0
+        # traverse the list and increase counter
+        while current_node.next:
+            current_node = current_node.next
+            counter += 1
+            # when counter passes n the next node is the target
+            if counter > n:
+                trailing = trailing.next
+        return trailing.value
