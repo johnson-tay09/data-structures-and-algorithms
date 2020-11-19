@@ -1,5 +1,6 @@
 import pytest
 from linked_list.linked_list import LinkedList
+from linked_list.ll_zip import zip_list
 
 
 # Can successfully instantiate an empty linked list
@@ -13,7 +14,7 @@ def test_insert():
     L.insert("a")
     L.insert("b")
     assert L.head.value == "b"
-    assert L.head.next.value == "a"
+    assert L.head.next_.value == "a"
 
  # The head property will properly point to the first node in the linked list
 
@@ -151,3 +152,12 @@ def test_nth_list_of_one():
 def test_nth_average_use():
     L = LinkedList(["a", "b", "c", "d", "e", "f", "g"])
     assert L.nth_from_end(3) == "d"
+
+
+def test_zip_list():
+    list_one = LinkedList(["a", "b", "c", "d"])
+    list_two = LinkedList(["1", "2", "3", "4"])
+    zipped_list = zip_list(list_one, list_two)
+    actual = zipped_list.value_list()
+    expected = ["a", "1", "b", "2", "c", "3", "d", "4"]
+    assert expected == actual

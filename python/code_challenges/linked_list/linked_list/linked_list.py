@@ -6,9 +6,9 @@
 
 
 class Node:
-    def __init__(self, value, next=None):
+    def __init__(self, value, next_=None):
         self.value = value
-        self.next = next
+        self.next_ = next_
 
 
 class LinkedList:
@@ -29,7 +29,7 @@ class LinkedList:
             if current_node.value == value:
                 return True
             # traverse list
-            current_node = current_node.next
+            current_node = current_node.next_
         return False
 
     def __str__(self):
@@ -37,7 +37,7 @@ class LinkedList:
         string_of_values = ""
         while current_node:
             string_of_values += f" { {str(current_node.value)} } ->"
-            current_node = current_node.next
+            current_node = current_node.next_
         return string_of_values.replace("'", " ") + " NULL"
 
     def value_list(self):
@@ -46,7 +46,7 @@ class LinkedList:
         while (current_node):
             if (current_node.value):
                 results.append(current_node.value)
-            current_node = current_node.next
+            current_node = current_node.next_
         return results
 
 # add a node to the end
@@ -57,11 +57,11 @@ class LinkedList:
         # aka start at the head
         if(self.head):
             current_node = self.head
-        # while current_node has a next value set current_node.next equal to this node
+        # while current_node has a next_ value set current_node.next_ equal to this node
         # this should move us to the end of the list.
-            while(current_node.next):
-                current_node = current_node.next
-            current_node.next = new_node
+            while(current_node.next_):
+                current_node = current_node.next_
+            current_node.next_ = new_node
             # otherwise set new node equal to self.head as in the first node in the list
         else:
             self.head = new_node
@@ -77,20 +77,20 @@ class LinkedList:
             current_node = self.head
             # if we want to add a node before the first
             if target == self.head.value:
-                # set the next value of our new node to the current first node
-                new_node.next = current_node
+                # set the next_ value of our new node to the current first node
+                new_node.next_ = current_node
                 # set the new node as head
                 self.head = new_node
                 # exit the fnc
                 return
-            # while current_node next node value is not equal to target, traverse the list
-            while(current_node.next.value != target):
+            # while current_node next_ node value is not equal to target, traverse the list
+            while(current_node.next_.value != target):
                 # when we get to the node before our target place our new node there
-                current_node = current_node.next
+                current_node = current_node.next_
             # have our new node point to the target node
-            new_node.next = current_node.next
+            new_node.next_ = current_node.next_
             # node we are at points to new node
-            current_node.next = new_node
+            current_node.next_ = new_node
             # otherwise set new node equal to self.head as in the first node in the list
         else:
             self.head = new_node
@@ -103,16 +103,16 @@ class LinkedList:
         # aka start at the head
         if(self.head):
             current_node = self.head
-        # while current_node next node value is not equal to target, traverse the list
-            while(current_node.next.value != target):
+        # while current_node next_ node value is not equal to target, traverse the list
+            while(current_node.next_.value != target):
                 # when we get to the node before our target place our new node there
-                current_node = current_node.next
+                current_node = current_node.next_
             # move forward one more node so current node = target node
-            current_node = current_node.next
+            current_node = current_node.next_
             # have our new node point to the target node
-            new_node.next = current_node.next
+            new_node.next_ = current_node.next_
             # node we are at points to new node
-            current_node.next = new_node
+            current_node.next_ = new_node
             # otherwise set new node equal to self.head as in the first node in the list
         else:
             self.head = new_node
@@ -124,7 +124,7 @@ class LinkedList:
         # traverse the list and increment length
         while current_node:
             length += 1
-            current_node = current_node.next
+            current_node = current_node.next_
         return length
 
     def nth_from_end(self, n=0):
@@ -138,10 +138,10 @@ class LinkedList:
         current_node = trailing = self.head
         counter = 0
         # traverse the list and increase counter
-        while current_node.next:
-            current_node = current_node.next
+        while current_node.next_:
+            current_node = current_node.next_
             counter += 1
-            # when counter passes n the next node is the target
+            # when counter passes n the next_ node is the target
             if counter > n:
-                trailing = trailing.next
+                trailing = trailing.next_
         return trailing.value
