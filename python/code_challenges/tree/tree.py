@@ -49,7 +49,7 @@ class BinaryTree:
 
         return values
 
-    def post_order(self):
+    def post_order(root):
 
         values = []
 
@@ -68,6 +68,27 @@ class BinaryTree:
         print(values)
 
         return values
+
+    def find_max_value(self):
+        # set current max to tree root.
+        current_max = self.root
+        if not self.root:
+            return None
+
+        def traverse(root):
+            # pull current from above scope
+            nonlocal current_max
+            # empty tree edge case
+            if not root:
+                return
+            # if root is greater than current value make the root value the current max value.
+            if root.value > current_max.value:
+                current_max = root
+            traverse(root.left)
+            traverse(root.right)
+
+        traverse(self.root)
+        return current_max.value
 
 
 class BinarySearchTree(BinaryTree):
