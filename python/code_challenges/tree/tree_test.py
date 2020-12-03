@@ -75,43 +75,110 @@ from .tree import BinaryTree, BinarySearchTree, Node
 # # text find max function
 
 
-def test_find_empty():
-    t = BinaryTree()
-    actual = t.find_max_value()
-    expected = None
-    assert actual == expected
+# def test_find_empty():
+#     t = BinaryTree()
+#     actual = t.find_max_value()
+#     expected = None
+#     assert actual == expected
 
 
-def test_find_max():
+# def test_find_max():
+#     t = BinaryTree()
+#     a = Node(3)
+#     b = Node(2)
+#     c = Node(5)
+#     t.root = a
+#     a.left = b
+#     a.right = c
+#     actual = t.find_max_value()
+#     expected = 5
+#     assert actual == expected
+
+
+# def test_multi_max():
+#     t = BinaryTree()
+#     a = Node(3)
+#     b = Node(2)
+#     c = Node(5)
+#     d = Node(5)
+#     t.root = a
+#     a.left = b
+#     a.right = c
+#     b.left = d
+#     actual = t.find_max_value()
+#     expected = 5
+#     assert actual == expected
+# # 0, 1 2 and many
+
+
+# def test_many_max():
+#     t = BinaryTree()
+#     a = Node(3)
+#     b = Node(2)
+#     c = Node(5)
+#     d = Node(5)
+#     g = Node(8)
+#     h = Node(22)
+#     i = Node(1)
+#     j = Node(19)
+#     k = Node(56)
+#     t.root = a
+#     a.left = b
+#     a.right = c
+#     b.left = d
+#     d.right = g
+#     d.left = h
+#     h.left = i
+#     i.right = j
+#     j.left = k
+#     actual = t.find_max_value()
+#     expected = 56
+#     assert actual == expected
+
+
+# def test_zero_breadth():
+#     t = BinaryTree()
+#     a = Node(3)
+#     b = Node(2)
+#     c = Node(5)
+#     d = Node(5)
+#     g = Node(8)
+#     h = Node(22)
+#     i = Node(1)
+#     j = Node(19)
+#     k = Node(56)
+#     t.root = a
+#     a.left = b
+#     a.right = c
+#     b.left = d
+#     d.right = g
+#     d.left = h
+#     h.left = i
+#     i.right = j
+#     j.left = k
+
+
+def test_one_breadth():
     t = BinaryTree()
     a = Node(3)
-    b = Node(2)
-    c = Node(5)
     t.root = a
-    a.left = b
-    a.right = c
-    actual = t.find_max_value()
-    expected = 5
+    expected = [3]
+    actual = t.breadth_traverse()
     assert actual == expected
 
 
-def test_multi_max():
+def test_two_breadth():
     t = BinaryTree()
     a = Node(3)
-    b = Node(2)
-    c = Node(5)
-    d = Node(5)
+    b = Node(5)
     t.root = a
     a.left = b
-    a.right = c
-    b.left = d
-    actual = t.find_max_value()
-    expected = 5
+    expected = [3, 5]
+    actual = t.breadth_traverse()
     assert actual == expected
-# 0, 1 2 and many
 
 
-def test_many_max():
+def test_many_breadth():
     t = BinaryTree()
     a = Node(3)
     b = Node(2)
@@ -126,11 +193,12 @@ def test_many_max():
     a.left = b
     a.right = c
     b.left = d
-    d.right = g
+    b.right = g
     d.left = h
-    h.left = i
+    d.left = i
     i.right = j
-    j.left = k
-    actual = t.find_max_value()
-    expected = 56
+    i.left = k
+    expected = [3, 2, 5, 5, 8, 1, 56, 19]
+    actual = t.breadth_traverse()
+    print(actual)
     assert actual == expected

@@ -1,8 +1,54 @@
+class InvalidOperationError(Exception):
+    pass
+
+
 class Node:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
+        self.front = None
+        self.back = None
+        self.next = None
+
+
+class Queue:
+
+    def __init__(self, front=None, back=None):
+        self.front = front
+        self.back = back
+
+    def enqueue(self, value):
+        node = Node(value)
+        # is the list empty?
+        if not self.front:
+            self.front = node
+            self.back = node
+            return
+        # current back next value becomes new node
+        self.back.next = node
+        # the new back is the new node
+        self.back = node
+
+    def peek(self):
+        if not self.front:
+            return False
+        return self.front.value
+
+    def is_empty(self):
+        # return boolean true as self.front is falsy
+        return not self.front
+
+    def dequeue(self):
+        if not self.front:
+            raise InvalidOperationError(
+                "Method not allowed on empty collection")
+        # save front node into a variable
+        target_node = self.front
+        # reassign front node to to old front.next
+        self.front = target_node.next
+        # return stored node
+        return target_node.value
 
 
 class BinaryTree:
@@ -89,6 +135,27 @@ class BinaryTree:
 
         traverse(self.root)
         return current_max.value
+
+    def breadth_traverse(self):
+        value_list = []
+        # check if tree exists
+        if not self.root:
+            return None
+        # create empty queue
+        breadth_queue = Queue()
+        # enqueue the root node
+        breadth_queue.enqueue(self.root)
+        # while enqueued node has value
+        while breadth_queue.peek():
+            # dequeue the root node
+            current_node = breadth_queue.dequeue()
+            value_list.append(current_node.value)
+            if current_node.left:
+                breadth_queue.enqueue(current_node.left)
+            if current_node.right:
+                breadth_queue.enqueue(current_node.right)
+        return value_list
+        # then dequeue left, the enqueue its L and R children if they exist.
 
 
 class BinarySearchTree(BinaryTree):
