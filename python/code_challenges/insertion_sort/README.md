@@ -9,4 +9,4 @@ Write Code
 Write Tests
 Write Blog post
 
-Link to Chal26 PR 
+Link to Chal26 PR https://github.com/johnson-tay09/data-structures-and-algorithms/pull/30
