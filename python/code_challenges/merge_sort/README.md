@@ -8,3 +8,5 @@ Merge sort can be used to sort an array. Write a blog post about how it works.
 Write Code
 Write Tests
 Write Blog post
+## Link to PR
+https://github.com/johnson-tay09/data-structures-and-algorithms/pull/31
