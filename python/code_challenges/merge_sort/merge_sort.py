@@ -2,6 +2,10 @@
 def merge_sort(arr):
     n = len(arr)
     # split the array in half
+    if n == 1:
+        return arr
+    if n == 0:
+        return "Not a valid input"
     if n > 1:
         mid = n//2
         left = arr[:mid]
@@ -31,5 +35,6 @@ def merge_sort(arr):
             arr[k] = right[j]
             j += 1
             k += 1
-    else:
-        return "Not a valid input"
+        return arr
+
+    
