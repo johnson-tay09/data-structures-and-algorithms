@@ -2,6 +2,8 @@ def insertion_sort(arr):
     # for each char in the array
     if len(arr) < 1:
         return "Not a valid input"
+    if len(arr) == 1:
+        return arr
     for char in range(1, len(arr)):
         # set check_char to 0
         check_char = char - 1
@@ -15,3 +17,4 @@ def insertion_sort(arr):
             check_char = check_char - 1
         # set temp to the position after check_char
         arr[check_char + 1] = temp
+    return arr
