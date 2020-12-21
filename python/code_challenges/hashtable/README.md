@@ -12,4 +12,4 @@ Write Code
 Write Tests
 
 
-Link to Chal30 PR https://github.com/johnson-tay09/data-structures-and-algorithms/pull/30
+Link to Chal30 PR https://github.com/johnson-tay09/data-structures-and-algorithms/pull/34
